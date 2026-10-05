@@ -1,0 +1,53 @@
+# ============================================================
+# MyBigProject — 完整依賴清單
+# 執行方式: pip install -r requirements.txt
+#
+# Python >= 3.10 required
+# Linux / Windows（需 NVIDIA GPU + CUDA 12.6 相容驅動，用於 embedding 加速）
+# ============================================================
+
+# ── LangChain 生態系 ─────────────────────────────────────────
+langchain
+langchain-core
+langchain-google-genai
+langchain-community
+langchain-chroma
+langchain-tavily
+langchain-text-splitters
+langgraph
+
+# ── Web UI ───────────────────────────────────────────────────
+nicegui
+
+# ── 向量搜尋與嵌入 ───────────────────────────────────────────
+sentence-transformers
+faiss-cpu
+numpy
+
+# ── 資料分析與圖表（數據分析專家 Worker 用）─────────────────────
+pandas
+matplotlib
+openpyxl
+
+# PyTorch（CUDA 12.6 版，用於 embedding GPU 加速；需 NVIDIA GPU + 對應驅動）
+--extra-index-url https://download.pytorch.org/whl/cu126
+torch==2.14.0
+
+# ── 資料庫與認證 ─────────────────────────────────────────────
+bcrypt
+
+# ── 網路請求 ─────────────────────────────────────────────────
+requests
+
+# ── 設定與資料驗證 ───────────────────────────────────────────
+python-dotenv
+pydantic
+
+# ── 中文文字處理（165 資料同步用，可選）────────────────────────
+# sync_165_data_on_startup() 需要此套件；若不使用同步功能可跳過
+opencc-python-reimplemented
+
+# ── Ollama 本地模型（165 資料同步用，可選）─────────────────────
+# sync_165_data_on_startup() 需要 langchain-ollama + 本地 Ollama 服務
+# 若不使用同步功能可跳過
+langchain-ollama

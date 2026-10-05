@@ -1,0 +1,37 @@
+{
+  "_說明": "RAG 檢索測試題。gold 判定：contains=採用的片段內容須包含其中任一字串；source=須採用該檔案；case_title=採用片段所屬案件的標題須包含其中任一字串。type=negative 表示知識庫中沒有答案，不應採用任何本地片段。answer_keywords 供 --e2e 模式檢查最終回答。",
+  "questions": [
+    {"id": "coffee-01", "worker": "咖啡專家", "type": "positive", "question": "耶加雪菲咖啡的風味特色是什麼？", "gold": {"contains": ["耶加雪菲位於"]}, "answer_keywords": ["茉莉", "藍莓"]},
+    {"id": "coffee-02", "worker": "咖啡專家", "type": "positive", "question": "請說明耶加雪菲咖啡的風味特色，並解釋咖啡豆產地文件的識別暗號是什麼。", "gold": {"contains": ["耶加雪菲位於", "青嵐-7421"]}, "answer_keywords": ["青嵐-7421"], "note": "使用者實際問過、原本答錯的題目（多意圖）"},
+    {"id": "coffee-03", "worker": "咖啡專家", "type": "positive", "question": "咖啡豆產地文件的識別暗號是什麼？", "gold": {"contains": ["青嵐-7421"]}, "answer_keywords": ["青嵐-7421"]},
+    {"id": "coffee-04", "worker": "咖啡專家", "type": "positive", "question": "手沖咖啡的粉水比和水溫建議是多少？", "gold": {"contains": ["手沖（Pour Over）"]}, "answer_keywords": ["1:15", "92"]},
+    {"id": "coffee-05", "worker": "咖啡專家", "type": "positive", "question": "冷萃咖啡要浸泡多久？", "gold": {"contains": ["冷萃（Cold Brew）"]}, "answer_keywords": [["12", "十二"], ["18", "十八"]]},
+    {"id": "coffee-06", "worker": "咖啡專家", "type": "positive", "question": "義式濃縮萃取得太快通常代表什麼問題？", "gold": {"contains": ["萃取過快"]}, "answer_keywords": ["研磨"]},
+    {"id": "coffee-07", "worker": "咖啡專家", "type": "positive", "question": "巴拿馬藝伎有哪些香氣？", "gold": {"contains": ["藝伎（Geisha）"]}, "answer_keywords": ["佛手柑"]},
+    {"id": "coffee-08", "worker": "咖啡專家", "type": "positive", "question": "沖煮方法那份文件的識別暗號是什麼？", "gold": {"contains": ["赤楓-3386"]}, "answer_keywords": ["赤楓-3386"]},
+    {"id": "coffee-n1", "worker": "咖啡專家", "type": "negative", "question": "詐欺罪最重可以判幾年？"},
+    {"id": "coffee-n2", "worker": "咖啡專家", "type": "negative", "question": "要怎麼申請護照？"},
+
+    {"id": "law-01", "worker": "刑法專家", "type": "positive", "question": "用騙術讓別人把錢交出來會觸犯什麼罪？刑度多少？", "gold": {"contains": ["第 339 條"]}, "answer_keywords": ["339", "五年"]},
+    {"id": "law-02", "worker": "刑法專家", "type": "positive", "question": "三個人以上一起犯詐欺會加重處罰嗎？", "gold": {"contains": ["第 339-4 條"]}, "answer_keywords": [["339-4", "339條之4", "339 條之 4", "339條之四"]]},
+    {"id": "law-03", "worker": "刑法專家", "type": "positive", "question": "偽造私人文件有什麼刑責？", "gold": {"contains": ["第 210 條"]}, "answer_keywords": [["210", "二百一十"]]},
+    {"id": "law-04", "worker": "洗錢防制專家", "type": "positive", "question": "洗錢行為會被判多重？", "gold": {"contains": ["第 19 條"]}, "answer_keywords": ["十年"]},
+    {"id": "law-05", "worker": "洗錢防制專家", "type": "positive", "question": "把自己的銀行帳戶借給別人使用違法嗎？", "gold": {"contains": ["第 22 條"]}, "answer_keywords": [["第22條", "第 22 條", "二十二條"]]},
+    {"id": "law-06", "worker": "民法專家", "type": "positive", "question": "故意或過失侵害他人權利要負什麼責任？", "gold": {"contains": ["第 184 條"]}, "answer_keywords": [["184", "一百八十四"]]},
+    {"id": "law-07", "worker": "民法專家", "type": "positive", "question": "被騙而簽下的契約可以撤銷嗎？", "gold": {"contains": ["第 92 條"]}, "answer_keywords": [["92", "九十二"], "撤銷"]},
+    {"id": "law-08", "worker": "刑事訴訟專家", "type": "positive", "question": "告訴乃論的案件要在多久之內提告？", "gold": {"contains": ["第 237 條"]}, "answer_keywords": ["六個月"]},
+    {"id": "law-09", "worker": "防詐條例專家", "type": "positive", "question": "詐騙犯自首並賠償被害人可以減輕刑罰嗎？", "gold": {"contains": ["第 46 條"]}, "answer_keywords": [["46", "四十六"]]},
+    {"id": "law-n1", "worker": "刑法專家", "type": "negative", "question": "手沖咖啡的水溫要幾度？"},
+    {"id": "law-n2", "worker": "民法專家", "type": "negative", "question": "耶加雪菲咖啡有什麼風味？"},
+    {"id": "law-n3", "worker": "洗錢防制專家", "type": "negative", "question": "明天台北會下雨嗎？"},
+
+    {"id": "fraud-01", "worker": "防詐騙專家", "type": "positive", "question": "我在抖音上訂了一台小型冷氣，去超商取貨打開卻是一台電風扇", "gold": {"source": ["防詐騙專家/Domain_Knowledge/新竹市/203323392995102729.md"], "case_title": ["假網拍"]}, "note": "精準題：source 用於統計是否找到該案，case_title 用於判定命中"},
+    {"id": "fraud-02", "worker": "防詐騙專家", "type": "positive", "question": "朋友突然用 LINE 說他親戚的兒子出車禍要賠錢，請我先匯款幫忙", "gold": {"source": ["防詐騙專家/Domain_Knowledge/臺中市/213186455973924891.md"], "case_title": ["LINE"]}},
+    {"id": "fraud-03", "worker": "防詐騙專家", "type": "positive", "question": "網路上跟賣家買頌缽，對方要我用賣貨便下單還說要做實名認證", "gold": {"source": ["防詐騙專家/Domain_Knowledge/新竹市/232317422739132424.md"], "case_title": ["假網拍"]}},
+    {"id": "fraud-04", "worker": "防詐騙專家", "type": "positive", "question": "有人在群組推薦保證獲利的投資平台，一開始有賺錢後來卻無法出金", "gold": {"case_title": ["投資"]}},
+    {"id": "fraud-05", "worker": "防詐騙專家", "type": "positive", "question": "應徵在家代工，對方要我把提款卡寄過去說要買材料", "gold": {"case_title": ["求職", "代工", "提款卡"]}},
+    {"id": "fraud-06", "worker": "防詐騙專家", "type": "positive", "question": "收到信用卡帳單才發現被盜刷了好幾筆網購", "gold": {"case_title": ["盜刷"]}},
+    {"id": "fraud-n1", "worker": "防詐騙專家", "type": "negative", "question": "耶加雪菲咖啡有什麼風味特色？"},
+    {"id": "fraud-n2", "worker": "防詐騙專家", "type": "negative", "question": "手沖咖啡的粉水比是多少？"}
+  ]
+}

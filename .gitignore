@@ -1,0 +1,41 @@
+# ── 虛擬環境 ──────────────────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+
+# ── Python 快取 ───────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+
+# ── API 金鑰（絕對不能上傳）──────────────────────────────────────────────────
+AllInOneProject/.env
+.env
+
+# ── 向量資料庫（自動產生，可重建）────────────────────────────────────────────
+AllInOneProject/chroma_dbs/
+AllInOneProject/Agent/chroma_dbs/
+
+# ── 165 API 同步產生的大量 .md（重跑 sync 可重建）───────────────────────────
+AllInOneProject/rag_docs/防詐騙專家/Domain_Knowledge/
+AllInOneProject/Agent/rag_docs/
+
+# ── SQLite 資料庫 ─────────────────────────────────────────────────────────────
+*.sqlite3
+*.sqlite3-journal
+
+# ── NiceGUI session 暫存 ──────────────────────────────────────────────────────
+.nicegui/
+AllInOneProject/.nicegui/
+AllInOneProject/View/.nicegui/
+
+# ── 執行日誌 / crash dump ─────────────────────────────────────────────────────
+run_stdout.txt
+run_stderr.txt
+sh.exe.stackdump
+
+# ── RAG 評測快取（依本機向量庫產生）──────────────────────────────────────────
+dev_scripts/rag_eval/cache.json
+
+# ── Claude Code 設定 ──────────────────────────────────────────────────────────
+.claude/

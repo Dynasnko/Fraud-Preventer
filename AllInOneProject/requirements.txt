@@ -1,0 +1,4 @@
+# AllInOneProject 依賴清單
+# 完整依賴請安裝根目錄 requirements.txt（pip install -r ../requirements.txt）；
+# 這裡沒有本子專案獨有、根目錄未涵蓋的套件。
+
